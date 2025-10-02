@@ -201,6 +201,27 @@ case $det in
 2)./ejercicio_grupos.sh;;
 esac
 done
+4.14 servicios.sh  
+
+Visualizar servicios  
+echo -e "ESTADO DE APACHE:" $(systemctl status apache2 | grep Active | cut -f 1 -d";") \
+"\nESTADO DE MySQL:" $(systemctl status mysql | grep Active | cut -f 1 -d";") \
+"\nESTADO DE SSH:" $(systemctl status ssh | grep Active | cut -f 1 -d";") 
+cat servicios.txt
+echo "" > servicios.txt
+
+Explicación:
+- Comprueba si los servicios principales (Apache2, MySQL y SSH) están activos o inactivos.
+- Permite al administrador detectar rápidamente si alguno de ellos dejó de funcionar.
+
+
+4.15 firewall.sh
+Visualizar estado del firewall
+#!/bin/bash
+sudo ufw status
+Explicación:
+- Muestra si el firewall (UFW) está activo o inactivo.
+- Le permite al administrador verificar la seguridad básica del sistema.
 
 5. Conclusiones
 El uso de scripts Bash como los presentados en este manual permite automatizar tareas administrativas comunes,
